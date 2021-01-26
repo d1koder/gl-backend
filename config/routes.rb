@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  post "/posts", to: "posts#create"
-  get "/posts", to: "posts#index"
+  post "/properties", to: "properties#create"
+  get "/properties", to: "properties#index"
 end

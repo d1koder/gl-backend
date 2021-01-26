@@ -1,3 +1,3 @@
-class Post < ApplicationRecord
+class Property < ApplicationRecord
     has_one_attached :featured_image
 end
