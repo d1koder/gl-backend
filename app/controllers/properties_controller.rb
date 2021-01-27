@@ -18,3 +18,5 @@ class PropertiesController < ApplicationController
         params.permit(:title, :description, :featured_image, :category_id)
     end
 end
+
+#this is a comment tedt
