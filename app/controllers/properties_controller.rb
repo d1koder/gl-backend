@@ -20,3 +20,4 @@ class PropertiesController < ApplicationController
 end
 
 #this is a comment tedt
+#this is another test
