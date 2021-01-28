@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     get "/properties/:id", to: "properties#show"
     put "/properties/:id", to: "properties#update"
     delete "/properties/:id", to: "properties#destroy"
-    scope "/auth" do
+    # use 'users' instead of 'auth' for now
+    scope "/users" do
       post '/sign_up', to: 'users#create'
+      post '/login', to: 'users#login'
     end
   end
 end
