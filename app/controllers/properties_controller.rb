@@ -18,3 +18,6 @@ class PropertiesController < ApplicationController
         params.permit(:title, :description, :featured_image, :category_id, :rate)
     end
 end
+
+#this is a comment tedt
+#this is another test
