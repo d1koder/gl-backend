@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope "/api" do
+  scope "/" do
     get "/properties", to: "properties#index"
     post "/properties", to: "properties#create"
     get "/properties/:id", to: "properties#show"
