@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
     
     def create
         @property = Property.create(property_params)
-        if @property.error.any?
+        if @property.errors.any?
             render json: @property.errors, status: :unprocessable_entity
         else 
             render json: @property, status: 201
