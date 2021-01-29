@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     delete "/properties/:id", to: "properties#destroy"
 
     # use'admin and users' instead of 'auth' for now
-    post "/sign_up", to: "users#create"
-    post "/login", to: "users#login"
+    scope "/auth" do
+      post "/sign_up", to: "users#create"
+      post "/login", to: "users#login"
+    end
   end
 end

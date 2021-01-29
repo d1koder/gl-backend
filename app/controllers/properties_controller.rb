@@ -1,4 +1,7 @@
 class PropertiesController < ApplicationController
+    before_action :authenticate_user, except: [:index, :show]
+    before_action :set_property, only: [:show, :update, :destroy]
+
     def index
         @properties = Property.all
         render json: @properties
@@ -17,6 +20,14 @@ class PropertiesController < ApplicationController
     def property_params
         params.permit(:title, :description, :featured_image, :category_id, :rate)
     end
+    
+    def set_property
+        begin
+            @property = Property.find(params[:id])
+        rescue 
+            render json: {error: "Property not found"}, status: 404
+        end
+      end
 end
 
 #this is a comment tedt
