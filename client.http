@@ -1,32 +1,5 @@
 ### Properties Index method
 GET http://localhost:3000/properties
 
-### Create a user
-POST http://localhost:3000/users/sign_up
-Content-Type: application/json
 
-{
-    "username": "Jacin5",
-    "email": "jacin5@test.com" ,
-    "password": "password5",
-    "password_confirmation": "password5"
-}
-
-### Login with correct details
-POST http://localhost:3000/users/login
-Content-Type: application/json
-
-{
-    "email": "jacin3@test.com",
-    "password": "password3"
-}
-
-### Login with incorrect details
-POST http://localhost:3000/users/login
-Content-Type: application/json
-
-{
-    "email": "jacin3000@test.com",
-    "password": "password3000"
-}
 
