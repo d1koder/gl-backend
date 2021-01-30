@@ -3,8 +3,10 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :update, :destroy]
 
   def index
-    @properties = Property.all
-    render json: @properties
+    if current_user.admin?
+        @properties = Property.all
+        render json: @properties
+    end
   end
 
   def create
