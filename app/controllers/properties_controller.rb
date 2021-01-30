@@ -1,8 +1,9 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_user, except: [:create]
+  before_action :authenticate_user, except: [:index, :create]
   before_action :set_property, only: [:show, :update, :destroy]
 
   def index
+    puts current_user.admin.to_s.upcase
     if current_user.admin?
         @properties = Property.all
         render json: @properties
@@ -16,6 +17,24 @@ class PropertiesController < ApplicationController
     else
       render json: @property, status: 201
     end
+  end
+
+  def show
+    render json: @property
+  end
+
+  def update
+    @property.update(property_params)
+    if @property.errors.any?
+        render json: @property.errors, status: :unprocessable_entity
+    else 
+        render json: @property, status: 201
+    end
+  end
+
+  def destroy
+    @property.delete
+    render json: 204
   end
 
   private

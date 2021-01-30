@@ -1,5 +1,30 @@
-### Properties Index method
+### Get properties with JWT from a user
 GET http://localhost:3000/properties
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIwMjAyNDksInN1YiI6NX0.wIKpEqKMhFH2Ekt1F6t1prgDDaCLsZd_HnaMvc4mXg4
 
+
+### Create a user/User signs up
+POST http://localhost:3000/auth/sign_up
+Content-Type: application/json
+
+{   
+    "username":"test-sign-up",
+    "email":"test@test.com",
+    "password":"password",
+    "password_confirmation":"password",
+    "admin":false
+}
+
+### user logs in to get a JWT
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{   
+   "auth": {
+        "email":"test@test.com",
+        "password":"password"
+   }
+}
 
 
