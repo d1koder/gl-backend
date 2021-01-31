@@ -9,10 +9,10 @@ POST http://localhost:3000/auth/sign_up
 Content-Type: application/json
 
 {   
-    "username":"apple",
-    "email":"apple@test.com",
-    "password":"password4",
-    "password_confirmation":"password4",
+    "username":"why",
+    "email":"why@test.com",
+    "password":"password",
+    "password_confirmation":"password",
     "admin":false
 }
 
@@ -21,10 +21,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {   
-   "auth": {
-        "email":"test@test.com",
+        "email":"why@test.com",
         "password":"password"
-   }
 }
 
 

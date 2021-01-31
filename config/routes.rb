@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :properties
     # generate user_token
     scope '/auth' do
-      post '/login', to: 'user_token#create'
+      post '/login', to: 'users#login'
       post '/sign_up', to: 'users#create'
     end
   end
