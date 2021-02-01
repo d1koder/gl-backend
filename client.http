@@ -1,10 +1,10 @@
 ### Get properties with JWT from a user
 GET http://localhost:3000/properties
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIwMjAyNDksInN1YiI6NX0.wIKpEqKMhFH2Ekt1F6t1prgDDaCLsZd_HnaMvc4mXg4
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIxNzAwNjMsInN1YiI6M30.KGbeDpdjk2-pNmDmw9xkxTsDWeyhhNQd-OW1Z2uc3mU
 
 
-### Create a user/User signs up
+### Create a user(User signs up)
 POST http://localhost:3000/auth/sign_up
 Content-Type: application/json
 
@@ -16,13 +16,28 @@ Content-Type: application/json
     "admin":false
 }
 
-### user logs in to get a JWT
+### User logs in to get a JWT
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {   
-        "email":"why@test.com",
+        "email":"admin@example.com",
         "password":"password"
 }
 
+### Get bookings with JWT from a user
+GET http://localhost:3000/bookings
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIxNzAyOTQsInN1YiI6M30.4ZmjfEdWIfLp7nASUnR1tDBkXQs5gY5mGlNaohncRo0
 
+### Create a new booking from a user with a token
+POST http://localhost:3000/bookings
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIxNzAyOTQsInN1YiI6M30.4ZmjfEdWIfLp7nASUnR1tDBkXQs5gY5mGlNaohncRo0
+
+{   
+    "start_date":"2021-03-03 12:37:50",
+    "end_date":"2021-03-04 12:37:50",
+    "property_id": 1,
+    "user_id" : 3
+}
