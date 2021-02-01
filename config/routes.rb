@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     scope '/auth' do
       post '/login', to: 'users#login'
       post '/sign_up', to: 'users#create'
+      post '/find_user', to: 'users#find'
     end
   end
 end

@@ -3,7 +3,6 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :update, :destroy]
 
   def index
-    puts current_user.admin.to_s.upcase
     if current_user.admin?
         @properties = Property.all
         render json: @properties
