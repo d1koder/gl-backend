@@ -1,11 +1,11 @@
 ### Get properties with JWT from a user
-GET http://localhost:3000/properties
+GET http://localhost:3000/api/properties
 Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIxNzAwNjMsInN1YiI6M30.KGbeDpdjk2-pNmDmw9xkxTsDWeyhhNQd-OW1Z2uc3mU
 
 
 ### Create a user(User signs up)
-POST http://localhost:3000/auth/sign_up
+POST http://localhost:3000/api/auth/sign_up
 Content-Type: application/json
 
 {   
@@ -17,21 +17,21 @@ Content-Type: application/json
 }
 
 ### User logs in to get a JWT
-POST http://localhost:3000/auth/login
+POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {   
-        "email":"admin@example.com",
-        "password":"password"
+        "email":"user@properties.com",
+        "password":"propertyBro"
 }
 
 ### Get bookings with JWT from a user
-GET http://localhost:3000/bookings
+GET http://localhost:3000/api/bookings
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIxNzAyOTQsInN1YiI6M30.4ZmjfEdWIfLp7nASUnR1tDBkXQs5gY5mGlNaohncRo0
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIzODU4ODcsInN1YiI6Mn0.X-yKJEGBrKNqjg5xOLjNW8to0TnFbn5COn7aOEfevBc
 
 ### Create a new booking from a user with a token
-POST http://localhost:3000/bookings
+POST http://localhost:3000/api/bookings
 Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIxNzAyOTQsInN1YiI6M30.4ZmjfEdWIfLp7nASUnR1tDBkXQs5gY5mGlNaohncRo0
 

@@ -4,9 +4,11 @@ class BookingsController < ApplicationController
   before_action :check_ownership, only: [:update, :destroy]
 
   def index
-    @bookings = current_user.bookings.all
+    @bookings = current_user.bookings.all.joins(:property).pluck(Arel.sql("properties.title, properties.location, bookings.start_date, bookings.end_date")).map { |p| { title: p[0], location: p[1], start_date: p[2], end_date: p[3] } }
     render json: @bookings
   end
+
+  
 
   def create
     @booking = current_user.bookings.create!(booking_params)
@@ -51,7 +53,7 @@ class BookingsController < ApplicationController
 
   def check_ownership
     if current_user.id != @booking.user.id
-      render json: { error: "You don't have permission to do that" }, status: 401
+      render json: { error: "You have no permission to do that" }, status: 401
     end
   end
 end

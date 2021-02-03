@@ -1,12 +1,10 @@
 class PropertiesController < ApplicationController
-  # before_action :authenticate_user, except: [:index, :create]
+  before_action :authenticate_user, except: [:index, :create]
   before_action :set_property, only: [:show, :update, :destroy]
 
   def index
-    if current_user.admin?
         @properties = Property.all
         render json: @properties
-    end
   end
 
   def create
@@ -39,7 +37,7 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.permit(:title, :description, :featured_image, :category_id, :rate)
+    params.permit(:title, :description, :featured_image, :category_id, :rate, :location)
   end
 
   def set_property
