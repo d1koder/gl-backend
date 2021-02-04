@@ -1,14 +1,12 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user, except: [:index, :create]
-  before_action :set_property, only: [:show, :update, :destroy]
+  before_action :set_booking, only: [:show, :update, :destroy]
   before_action :check_ownership, only: [:update, :destroy]
 
   def index
-    @bookings = current_user.bookings.all.joins(:property).pluck(Arel.sql("properties.title, properties.location, bookings.start_date, bookings.end_date")).map { |p| { title: p[0], location: p[1], start_date: p[2], end_date: p[3] } }
+    @bookings = current_user.bookings.all.joins(:property).pluck(Arel.sql("properties.title, properties.location, bookings.start_date, bookings.end_date, bookings.id")).map { |p| { title: p[0], location: p[1], start_date: p[2], end_date: p[3], id:p[4] } }
     render json: @bookings
   end
-
-  
 
   def create
     @booking = current_user.bookings.create!(booking_params)

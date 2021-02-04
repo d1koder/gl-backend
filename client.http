@@ -28,16 +28,20 @@ Content-Type: application/json
 ### Get bookings with JWT from a user
 GET http://localhost:3000/api/bookings
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIzODU4ODcsInN1YiI6Mn0.X-yKJEGBrKNqjg5xOLjNW8to0TnFbn5COn7aOEfevBc
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTI0MTIxNTUsInN1YiI6Mn0.bkAVx9ouaHJLWo1bAe2eI9OSLer1pQe1yTpklAz-iYM
 
 ### Create a new booking from a user with a token
 POST http://localhost:3000/api/bookings
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIxNzAyOTQsInN1YiI6M30.4ZmjfEdWIfLp7nASUnR1tDBkXQs5gY5mGlNaohncRo0
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTI0MTIxNTUsInN1YiI6Mn0.bkAVx9ouaHJLWo1bAe2eI9OSLer1pQe1yTpklAz-iYM
 
 {   
-    "start_date":"2021-03-03 12:37:50",
-    "end_date":"2021-03-04 12:37:50",
-    "property_id": 1,
-    "user_id" : 3
+    "start_date":"2046-03-03 12:37:50",
+    "end_date":"2046-03-04 12:37:50",
+    "property_id": 3,
+    "user_id" : 2
 }
+
+### Destroy booking/cancel booking from a user with a token
+DELETE  http://localhost:3000/api/bookings/5
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTI0MzEzMzEsInN1YiI6Mn0.ENO5PYDDjNrJWsDt4ayXrNMBFpxZGKwCxn42uAdoqP0
