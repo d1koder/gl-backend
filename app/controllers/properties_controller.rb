@@ -3,8 +3,14 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :update, :destroy]
 
   def index
-        @properties = Property.all
-        render json: @properties
+    @properties = Property.all
+
+    if params[:keyword] && params[:keyword] != ""
+      p params[:keyword]
+      @properties = @properties.where("title ILIKE ?", "%#{params[:keyword]}%")      
+    end
+        
+    render json: @properties
   end
 
   def create
