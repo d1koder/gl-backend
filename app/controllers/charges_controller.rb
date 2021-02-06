@@ -1,10 +1,10 @@
 class ChargesController < ApplicationController
     def create
 
-        Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+        Stripe.api_key = 'sk_test_51HiAyvBu8aPdLWzIbgCyytFnkxjMhN18AcgxanRUboljvzLcbvXgHYzVuWI9TKWrh1SgRFJcSQspeLc0LFv9FBi200meblS75G'
 
-        bookings = current_user.bookings.all.joins(:property).pluck(Arel.sql("properties.title, properties.location, bookings.start_date, bookings.end_date, bookings.id, bookings.total")).map { |p| { title: p[0], location: p[1], start_date: p[2], end_date: p[3], id:p[4], total: p[5] } }
-        amount = bookings.sum(:total) * 100
+        bookings = User.find(params[:user_id]).bookings.all
+        amount = bookings.sum(:total).to_i * 100
 
         charge = Stripe::Charge.create(
             :amount => amount,
