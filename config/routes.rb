@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     # delete "/properties/:id", to: "properties#destroy"
     resources :properties
     resources :bookings
+    resources :charges
     # generate user_token
     scope '/auth' do
       post '/login', to: 'users#login'

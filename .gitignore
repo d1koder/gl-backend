@@ -26,5 +26,8 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Ignore .env.development for secret key
-/.env.development
+# Ignore .env for secret key
+/.env
+
+#Ignore client http
+/client.http
