@@ -3,10 +3,14 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :update, :destroy]
 
   def index
-    if current_user.admin?
-        @properties = Property.all
-        render json: @properties
+    @properties = Property.all
+
+    if params[:keyword] && params[:keyword] != ""
+      # p params[:keyword]
+      @properties = @properties.where("title ILIKE ?", "%#{params[:keyword]}%")      
     end
+        
+    render json: @properties
   end
 
   def create
@@ -39,7 +43,7 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.permit(:title, :description, :featured_image, :category_id, :rate)
+    params.permit(:title, :description, :featured_image, :category_id, :rate, :location)
   end
 
   def set_property

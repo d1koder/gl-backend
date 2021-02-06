@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   # properties
-  scope "/" do
+  scope "/api" do
     # get "/properties", to: "properties#index"
     # post "/properties", to: "properties#create"
     # get "/properties/:id", to: "properties#show"
     # put "/properties/:id", to: "properties#update"
     # delete "/properties/:id", to: "properties#destroy"
     resources :properties
+    resources :bookings
     # generate user_token
     scope '/auth' do
       post '/login', to: 'users#login'

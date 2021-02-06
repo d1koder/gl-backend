@@ -1,11 +1,16 @@
 ### Get properties with JWT from a user
-GET http://localhost:3000/properties
+GET http://localhost:3000/api/properties
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIwMjAyNDksInN1YiI6NX0.wIKpEqKMhFH2Ekt1F6t1prgDDaCLsZd_HnaMvc4mXg4
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTIxNzAwNjMsInN1YiI6M30.KGbeDpdjk2-pNmDmw9xkxTsDWeyhhNQd-OW1Z2uc3mU
 
 
+<<<<<<< HEAD
 ### Create a user/User signs up
 POST http://localhost:8080/auth/sign_up
+=======
+### Create a user(User signs up)
+POST http://localhost:3000/api/auth/sign_up
+>>>>>>> ec12223416aefe0265411f36d1cef697a9aa8973
 Content-Type: application/json
 
 {   
@@ -16,6 +21,7 @@ Content-Type: application/json
     "admin":false
 }
 
+<<<<<<< HEAD
 ### user logs in to get a JWT
 POST http://localhost:8080/auth/login
 Content-Type: application/json
@@ -23,6 +29,34 @@ Content-Type: application/json
 {   
         "email":"dk@gmail.com",
         "password":"123456"
+=======
+### User logs in to get a JWT
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{   
+        "email":"user@properties.com",
+        "password":"propertyBro"
+>>>>>>> ec12223416aefe0265411f36d1cef697a9aa8973
 }
 
+### Get bookings with JWT from a user
+GET http://localhost:3000/api/bookings
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTI0MTIxNTUsInN1YiI6Mn0.bkAVx9ouaHJLWo1bAe2eI9OSLer1pQe1yTpklAz-iYM
 
+### Create a new booking from a user with a token
+POST http://localhost:3000/api/bookings
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTI0MTIxNTUsInN1YiI6Mn0.bkAVx9ouaHJLWo1bAe2eI9OSLer1pQe1yTpklAz-iYM
+
+{   
+    "start_date":"2046-03-03 12:37:50",
+    "end_date":"2046-03-04 12:37:50",
+    "property_id": 3,
+    "user_id" : 2
+}
+
+### Destroy booking/cancel booking from a user with a token
+DELETE  http://localhost:3000/api/bookings/5
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTI0MzEzMzEsInN1YiI6Mn0.ENO5PYDDjNrJWsDt4ayXrNMBFpxZGKwCxn42uAdoqP0
