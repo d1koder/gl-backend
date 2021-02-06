@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   before_action :check_ownership, only: [:update, :destroy]
 
   def index
-    @bookings = current_user.bookings.all.joins(:property).pluck(Arel.sql("properties.title, properties.location, bookings.start_date, bookings.end_date, bookings.id")).map { |p| { title: p[0], location: p[1], start_date: p[2], end_date: p[3], id:p[4] } }
+    @bookings = current_user.bookings.all.joins(:property).pluck(Arel.sql("properties.title, properties.location, bookings.start_date, bookings.end_date, bookings.id, bookings.total")).map { |p| { title: p[0], location: p[1], start_date: p[2], end_date: p[3], id:p[4], total: p[5] } }
     render json: @bookings
   end
 
@@ -16,8 +16,7 @@ class BookingsController < ApplicationController
     total = (@booking.end_date - @booking.start_date).to_i * selected_property.rate
     @booking.total = total
 
-    @booking.save!
-    p @booking
+    @booking.save
 
     # @booking = current_user.bookings.create(booking_params)
     if @booking.errors.any?

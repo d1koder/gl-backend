@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
     @properties = Property.all
 
     if params[:keyword] && params[:keyword] != ""
-      p params[:keyword]
+      # p params[:keyword]
       @properties = @properties.where("title ILIKE ?", "%#{params[:keyword]}%")      
     end
         
