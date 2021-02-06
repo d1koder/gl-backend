@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
     def create
 
-        Stripe.api_key = 'sk_test_51HiAyvBu8aPdLWzIbgCyytFnkxjMhN18AcgxanRUboljvzLcbvXgHYzVuWI9TKWrh1SgRFJcSQspeLc0LFv9FBi200meblS75G'
+        Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
         bookings = User.find(params[:user_id]).bookings.all
         amount = bookings.sum(:total).to_i * 100
