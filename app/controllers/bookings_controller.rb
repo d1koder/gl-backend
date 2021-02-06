@@ -9,7 +9,17 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = current_user.bookings.create(booking_params)
+
+    selected_property = Property.find(params[:property_id])
+    @booking = current_user.bookings.build(booking_params)
+
+    total = (@booking.end_date - @booking.start_date).to_i * selected_property.rate
+    @booking.total = total
+
+    @booking.save!
+    p @booking
+
+    # @booking = current_user.bookings.create(booking_params)
     if @booking.errors.any?
       render json:  @booking.errors.full_messages, status: :unprocessable_entity
     else
@@ -38,7 +48,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :property_id, :user_id)
+    params.require(:booking).permit(:start_date, :end_date, :property_id, :user_id, :total)
   end
 
   def set_booking
