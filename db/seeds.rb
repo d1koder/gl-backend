@@ -8,7 +8,7 @@
 
 if User.all.length == 0
   admin = User.new
-  admin.username = "propertyKing"
+  admin.username = "Admin"
   admin.email = "admin@properties.com"
   admin.password = "propertyKing"
   admin.password_confirmation = "propertyKing"
