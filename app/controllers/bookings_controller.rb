@@ -4,12 +4,12 @@ class BookingsController < ApplicationController
   before_action :check_ownership, only: [:update, :destroy]
 
   def index
-    @bookings = current_user.bookings.all.joins(:property).pluck(Arel.sql("properties.title, properties.location, bookings.start_date, bookings.end_date, bookings.id, bookings.total")).map { |p| { title: p[0], location: p[1], start_date: p[2], end_date: p[3], id:p[4], total: p[5] } }
-    render json: @bookings
+      @bookings = current_user.bookings.all.joins(:property).pluck(Arel.sql("properties.title, properties.location, bookings.start_date, bookings.end_date, bookings.id, bookings.total")).map { |p| { title: p[0], location: p[1], start_date: p[2], end_date: p[3], id: p[4], total: p[5] } }
+
+      render json: @bookings
   end
 
   def create
-
     selected_property = Property.find(params[:property_id])
     @booking = current_user.bookings.build(booking_params)
 
@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
 
     # @booking = current_user.bookings.create(booking_params)
     if @booking.errors.any?
-      render json:  @booking.errors.full_messages, status: :unprocessable_entity
+      render json: @booking.errors.full_messages, status: :unprocessable_entity
     else
       render json: @booking, status: 201
     end
