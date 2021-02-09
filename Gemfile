@@ -47,3 +47,6 @@ gem 'active_model_serializers'
 gem 'pluck_to_hash'
 
 gem 'stripe'
+
+gem "aws-sdk-s3"
+
